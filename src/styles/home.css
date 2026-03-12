@@ -1,0 +1,969 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    overflow-x: hidden;
+    background: #fff;
+}
+
+/* ── NAVBAR ───────────────────────────────── */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1.25rem 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition:
+        background 0.35s,
+        backdrop-filter 0.35s;
+}
+.nav.scrolled {
+    background: rgba(10, 10, 30, 0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+.nav-logo {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+    text-decoration: none;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+.nav-logo-dot {
+    color: #f97316;
+}
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+    align-items: center;
+}
+.nav-links a {
+    color: rgba(255, 255, 255, 0.88);
+    text-decoration: none;
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    transition: color 0.2s;
+}
+.nav-links a:hover {
+    color: #fff;
+}
+
+/* hamburger */
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+}
+.nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+.nav-hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.nav-hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+.nav-hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+.nav-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background: rgba(10, 10, 30, 0.97);
+    backdrop-filter: blur(16px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+.nav-mobile.open {
+    opacity: 1;
+    pointer-events: all;
+}
+.nav-mobile a {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+}
+
+/* ── HERO ─────────────────────────────────── */
+.hero {
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            ellipse at 80% 8%,
+            rgba(225, 90, 20, 1) 0%,
+            transparent 42%
+        ),
+        radial-gradient(
+            ellipse at 14% 88%,
+            rgba(30, 60, 200, 0.95) 0%,
+            transparent 46%
+        ),
+        radial-gradient(
+            ellipse at 96% 58%,
+            rgba(170, 30, 20, 0.8) 0%,
+            transparent 36%
+        ),
+        radial-gradient(
+            ellipse at 50% 35%,
+            rgba(200, 120, 45, 0.6) 0%,
+            transparent 52%
+        ),
+        radial-gradient(
+            ellipse at 5% 12%,
+            rgba(45, 85, 225, 0.85) 0%,
+            transparent 36%
+        ),
+        radial-gradient(
+            ellipse at 62% 72%,
+            rgba(185, 75, 25, 0.55) 0%,
+            transparent 44%
+        ),
+        #1e3a8a;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 4.5rem 7rem;
+}
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 60%,
+        rgba(0, 0, 0, 0.15) 100%
+    );
+}
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+.hero-title {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: clamp(3.8rem, 9.5vw, 9rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    text-shadow: 0 4px 40px rgba(0, 0, 0, 0.18);
+}
+.hero-subtitle {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: clamp(2.4rem, 6vw, 5.8rem);
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.86);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-top: 0.2rem;
+    text-align: right;
+}
+.hero-cta {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+}
+.pill-btn {
+    display: inline-block;
+    padding: 0.9rem 2.4rem;
+    border-radius: 999px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    text-decoration: none;
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition:
+        background 0.25s,
+        transform 0.2s;
+    backdrop-filter: blur(8px);
+    white-space: nowrap;
+    outline: 2px solid rgba(255, 255, 255, 0.75);
+}
+.pill-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+    outline-color: #fff;
+    transform: translateY(-1px);
+}
+
+/* ── START FREE ───────────────────────────── */
+.start-free {
+    background: #f4f4fa;
+    padding: 7rem 4.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+.start-title {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    font-weight: 800;
+    color: #111;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+}
+.start-desc {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #444;
+    border: 2px solid #7c3aed;
+    border-radius: 12px;
+    padding: 1.4rem 1.6rem;
+    margin-top: 2rem;
+}
+.start-desc strong {
+    color: #7c3aed;
+    font-weight: 700;
+}
+.start-cta {
+    margin-top: 2.5rem;
+}
+.dark-btn {
+    display: inline-block;
+    padding: 1rem 2.6rem;
+    background: #1c1c32;
+    color: #fff;
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition:
+        background 0.22s,
+        transform 0.2s;
+    letter-spacing: 0.01em;
+}
+.dark-btn:hover {
+    background: #2d2d55;
+    transform: translateY(-1px);
+}
+.start-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mockup-browser {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow:
+        0 24px 80px rgba(0, 0, 0, 0.12),
+        0 4px 16px rgba(0, 0, 0, 0.06);
+    width: 100%;
+    max-width: 420px;
+}
+.mockup-topbar {
+    background: #f0f0f0;
+    padding: 0.75rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.mockup-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.mockup-body {
+    padding: 1.2rem;
+}
+.mockup-nav-placeholder {
+    height: 8px;
+    background: #e8e8e8;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    width: 80%;
+}
+.mockup-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+.mockup-card {
+    border-radius: 10px;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+}
+.mockup-card-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.mockup-card-img {
+    flex: 1;
+}
+.mockup-card-text {
+    padding: 0.5rem;
+    background: #fafafa;
+}
+.mockup-line {
+    height: 6px;
+    border-radius: 3px;
+    margin-bottom: 4px;
+}
+
+/* ── SMART SELLING ────────────────────────── */
+.smart {
+    background: #111;
+    padding: 6rem 4.5rem;
+}
+.smart-title {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    font-style: italic;
+    color: #fff;
+    margin-bottom: 3rem;
+    line-height: 1.2;
+}
+.smart-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+.smart-card {
+    background: #1c1c1c;
+    border-radius: 22px;
+    overflow: hidden;
+    padding: 3rem 2rem 2.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition:
+        transform 0.25s,
+        border-color 0.25s;
+}
+.smart-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+.smart-card-visual {
+    width: 180px;
+    height: 165px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.shop-phone {
+    width: 70px;
+    height: 110px;
+    background: #e8e0ff;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(120, 80, 220, 0.3);
+}
+.shop-phone::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border-radius: 8px;
+    background: linear-gradient(160deg, #c4b5fd 0%, #a78bfa 100%);
+}
+.shop-basket {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 65px;
+    height: 55px;
+    background: linear-gradient(135deg, #fde68a, #f59e0b);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    box-shadow: 0 6px 18px rgba(245, 158, 11, 0.35);
+    z-index: 2;
+}
+.shop-dot {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #f43f5e;
+    top: 8px;
+    right: 6px;
+    z-index: 3;
+}
+.smart-card-label {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.82);
+    letter-spacing: 0.01em;
+}
+.smart-cta {
+    display: flex;
+    justify-content: center;
+}
+.pill-btn-dark {
+    display: inline-block;
+    padding: 0.9rem 2.4rem;
+    border-radius: 999px;
+    color: #111;
+    background: #fff;
+    text-decoration: none;
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition:
+        background 0.22s,
+        transform 0.2s;
+    letter-spacing: 0.01em;
+}
+.pill-btn-dark:hover {
+    background: #e8e8e8;
+    transform: translateY(-1px);
+}
+
+/* ── SERVICES ─────────────────────────────── */
+.services {
+    background: #c8d9f5;
+    padding: 6rem 4.5rem;
+}
+.section-eyebrow {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    margin-bottom: 3.5rem;
+    color: #1e1e4a;
+}
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+.service-card {
+    background: #fff;
+    border-radius: 22px;
+    padding: 2.8rem 2.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    box-shadow: 0 2px 16px rgba(30, 30, 74, 0.07);
+    transition:
+        transform 0.25s,
+        box-shadow 0.25s;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(30, 30, 74, 0.13);
+}
+.service-icon-wrap {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+.service-name {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #1e1e4a;
+    letter-spacing: -0.01em;
+}
+.service-desc {
+    font-size: 0.92rem;
+    color: #555;
+    line-height: 1.7;
+}
+
+/* ── WHY US ───────────────────────────────── */
+.whyus {
+    background: #e8932a;
+    padding: 6rem 4.5rem;
+}
+.whyus .section-eyebrow {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 3.5rem;
+}
+.whyus-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+.whyus-card {
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 22px;
+    padding: 2.8rem 2.4rem;
+    backdrop-filter: blur(6px);
+    transition:
+        background 0.25s,
+        transform 0.25s;
+}
+.whyus-card:hover {
+    background: rgba(255, 255, 255, 0.24);
+    transform: translateY(-3px);
+}
+.whyus-card-num {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.22);
+    line-height: 1;
+    margin-bottom: 1.2rem;
+}
+.whyus-card h3 {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.01em;
+}
+.whyus-card p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.82);
+    line-height: 1.7;
+}
+
+/* ── PARTNERS MARQUEE ─────────────────────── */
+.partners {
+    background: #e8932a;
+    padding: 2.5rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+    overflow: hidden;
+}
+.marquee-outer {
+    overflow: hidden;
+}
+.marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    width: max-content;
+    animation: marqueeLeft 30s linear infinite;
+}
+.marquee-track:hover {
+    animation-play-state: paused;
+}
+.marquee-logo {
+    height: 52px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
+    flex-shrink: 0;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+}
+.marquee-logo:hover {
+    opacity: 1;
+}
+@keyframes marqueeLeft {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* ── FOUNDERS ─────────────────────────────── */
+.founders {
+    background: #c8d9f5;
+    padding: 6rem 4.5rem;
+}
+.founders-title {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: #1e1e4a;
+    text-align: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+}
+.founders-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    max-width: 860px;
+    margin: 0 auto;
+}
+.founder-card {
+    text-align: center;
+}
+.founder-avatar {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 22px;
+    margin-bottom: 1.1rem;
+    object-fit: cover;
+    display: block;
+    box-shadow: 0 8px 32px rgba(30, 30, 74, 0.14);
+    transition:
+        transform 0.28s,
+        box-shadow 0.28s;
+}
+.founder-card:hover .founder-avatar {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 16px 48px rgba(30, 30, 74, 0.22);
+}
+.founder-name {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #1e1e4a;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+.founder-role {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.25rem;
+}
+
+/* ── SKILLS ───────────────────────────────── */
+.skill-word {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: clamp(9.5rem, 10.5vw, 9.5rem);
+    font-weight: 800;
+    white-space: nowrap;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+    color: #473dc6;
+}
+
+/* ── CONTACT ──────────────────────────────── */
+.contact {
+    background: #3d3d96;
+    padding: 6rem 4.5rem;
+}
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.contact-video {
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background: linear-gradient(
+        135deg,
+        #4a3fa8 0%,
+        #6b40c8 40%,
+        #3a2e88 80%,
+        #2a1f6a 100%
+    );
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+.contact-video-shapes {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    opacity: 0.6;
+}
+.cv-sphere {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(1px);
+}
+.contact-title {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: clamp(2.2rem, 4.5vw, 4rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+}
+.contact-info-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 18px;
+    padding: 1.8rem;
+    margin-bottom: 2rem;
+}
+.contact-info-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.contact-info-row:last-child {
+    border-bottom: none;
+}
+.contact-info-label {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    width: 60px;
+    flex-shrink: 0;
+}
+.contact-info-value {
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.88);
+}
+.book-btn {
+    display: inline-block;
+    padding: 0.9rem 2.4rem;
+    border-radius: 999px;
+    border: 2px solid rgba(255, 255, 255, 0.65);
+    color: #fff;
+    background: transparent;
+    text-decoration: none;
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.08em;
+    transition:
+        background 0.22s,
+        border-color 0.22s,
+        transform 0.2s;
+}
+.book-btn:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: #fff;
+    transform: translateY(-1px);
+}
+
+/* ── RESPONSIVE ───────────────────────────── */
+@media (max-width: 900px) {
+    .nav {
+        padding: 1rem 1.8rem;
+    }
+    .nav-links {
+        display: none;
+    }
+    .nav-hamburger {
+        display: flex;
+    }
+
+    .hero {
+        padding: 0 2rem 5rem;
+    }
+    .hero-subtitle {
+        text-align: left;
+    }
+
+    .start-free {
+        padding: 4rem 2rem;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    .start-visual {
+        display: none;
+    }
+
+    .smart {
+        padding: 4rem 2rem;
+    }
+    .smart-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .services {
+        padding: 4rem 2rem;
+    }
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .whyus {
+        padding: 4rem 2rem;
+    }
+    .whyus-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .founders {
+        padding: 4rem 2rem;
+    }
+    .founders-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem;
+    }
+
+    .skill-word {
+        font-size: clamp(2.8rem, 11vw, 5rem);
+    }
+
+    .contact {
+        padding: 4rem 2rem;
+    }
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .founders-grid {
+        grid-template-columns: 1fr;
+        max-width: 260px;
+    }
+    .hero-title {
+        font-size: clamp(3rem, 13vw, 4rem);
+    }
+    .hero-subtitle {
+        font-size: clamp(2rem, 9vw, 2.8rem);
+    }
+}
+
+/* ── SKILLS SECTION ───────────────────────────────────── */
+.skills-section {
+    background: #cfe6ff;
+    padding: 4rem 0;
+    overflow: hidden;
+}
+.skills-row {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    padding: 0 2.5rem;
+    margin-bottom: 0.4rem;
+    white-space: nowrap;
+}
+.skills-row:last-child {
+    margin-bottom: 0;
+}
+
+.skill-img {
+    border-radius: 18px;
+    object-fit: cover;
+    flex-shrink: 0;
+    display: block;
+    width: 150px;
+    height: 150px;
+}
+.skill-img-wide {
+    border-radius: 18px;
+    object-fit: cover;
+    flex-shrink: 0;
+    display: block;
+    width: 190px;
+    height: 150px;
+}
+.skill-img-sm {
+    border-radius: 18px;
+    object-fit: cover;
+    flex-shrink: 0;
+    display: block;
+    width: 130px;
+    height: 150px;
+}
+
+@media (max-width: 900px) {
+    .skills-section {
+        padding: 3rem 0;
+    }
+    .skills-row {
+        gap: 1rem;
+        padding: 0 1.2rem;
+        margin-bottom: 0.3rem;
+    }
+    .skill-word {
+        font-size: clamp(2.6rem, 9vw, 4.5rem);
+    }
+    .skill-img {
+        width: 80px;
+        height: 80px;
+        border-radius: 12px;
+    }
+    .skill-img-wide {
+        width: 105px;
+        height: 80px;
+        border-radius: 12px;
+    }
+    .skill-img-sm {
+        width: 70px;
+        height: 80px;
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 500px) {
+    .skills-row {
+        gap: 0.7rem;
+        padding: 0 0.8rem;
+    }
+    .skill-word {
+        font-size: clamp(2rem, 10vw, 3rem);
+    }
+    .skill-img {
+        width: 55px;
+        height: 55px;
+        border-radius: 10px;
+    }
+    .skill-img-wide {
+        width: 75px;
+        height: 55px;
+        border-radius: 10px;
+    }
+    .skill-img-sm {
+        width: 48px;
+        height: 55px;
+        border-radius: 10px;
+    }
+}
