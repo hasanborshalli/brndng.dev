@@ -534,7 +534,7 @@ export default function HomePage() {
                                 </div>
                             ))}
                         </div>
-                        <a href="mailto:info@brndnglb.com" className="book-btn">
+                        <a href="https://wa.me/76679623" className="book-btn">
                             BOOK NOW
                         </a>
                     </div>
