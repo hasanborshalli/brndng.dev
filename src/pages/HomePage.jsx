@@ -276,7 +276,7 @@ export default function HomePage() {
                     <div className="smart-card">
                         <div className="smart-card-visual">
                             <img
-                                src="/images/earth.png"
+                                src="/images/earth.webp"
                                 alt="Earth"
                                 style={{
                                     width: 140,
@@ -416,7 +416,7 @@ export default function HomePage() {
                 <div className="skills-row">
                     <span className="skill-word">Design</span>
                     <img
-                        src="/images/skill-1.png"
+                        src="/images/skill-1.webp"
                         alt=""
                         className="skill-img"
                     />
@@ -424,12 +424,12 @@ export default function HomePage() {
                 </div>
                 <div className="skills-row">
                     <img
-                        src="/images/skill-2.png"
+                        src="/images/skill-2.webp"
                         alt=""
                         className="skill-img-sm"
                     />
                     <img
-                        src="/images/skill-3.png"
+                        src="/images/skill-3.webp"
                         alt=""
                         className="skill-img-sm"
                     />
@@ -438,12 +438,12 @@ export default function HomePage() {
                 <div className="skills-row">
                     <span className="skill-word">Systems</span>
                     <img
-                        src="/images/skill-4.png"
+                        src="/images/skill-4.webp"
                         alt=""
                         className="skill-img"
                     />
                     <img
-                        src="/images/skill-5.png"
+                        src="/images/skill-5.webp"
                         alt=""
                         className="skill-img"
                     />
@@ -451,7 +451,7 @@ export default function HomePage() {
                 </div>
                 <div className="skills-row">
                     <img
-                        src="/images/skill-6.png"
+                        src="/images/skill-6.webp"
                         alt=""
                         className="skill-img-wide"
                     />
