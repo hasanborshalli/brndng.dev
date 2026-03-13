@@ -802,6 +802,9 @@ body {
 
     .hero {
         padding: 0 2rem 5rem;
+        min-height: auto;
+        height: 100vh;
+        max-height: 600px;
     }
     .hero-subtitle {
         text-align: left;
