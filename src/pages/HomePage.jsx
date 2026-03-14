@@ -28,16 +28,16 @@ const PARTNERS = [
 ];
 
 const FOUNDERS = [
-    { name: "Mohammad Ali Keshli", role: "CEO", img: "/images/founder-1.png" },
+    { name: "Mohammad Ali Keshli", role: "CEO", img: "/images/mohamad.jpeg" },
     {
         name: "Hasan Borshalli",
         role: "Head of development",
-        img: "/images/founder-2.png",
+        img: "/images/hasan.jpeg",
     },
     {
         name: "Ahmad Orfali",
         role: "Head of finance",
-        img: "/images/founder-3.png",
+        img: "/images/ahmad.jpeg",
     },
 ];
 
