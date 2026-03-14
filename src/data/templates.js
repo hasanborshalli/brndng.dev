@@ -102,7 +102,7 @@ export const TEMPLATES = [
             "Featured images",
         ],
         price: 29,
-        demoUrl: "https://your-blog-demo-link.com",
+        demoUrl: "https://slateblue-armadillo-351375.hostingersite.com",
     },
     {
         id: 8,
