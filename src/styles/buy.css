@@ -64,7 +64,7 @@
 /* template image */
 .buy-img-wrap {
     width: 100%;
-    aspect-ratio: 16/9;
+    aspect-ratio: 21/10;
     border-radius: 20px;
     overflow: hidden;
     background: linear-gradient(135deg, #c8d9f5, #e8ecff);
@@ -75,7 +75,7 @@
 .buy-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
 }
 .buy-img-save {

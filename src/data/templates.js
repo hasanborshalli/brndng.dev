@@ -5,7 +5,7 @@ export const TEMPLATES = [
         category: "E-commerce",
         description:
             "Editorial & Warm. Best for Lifestyle brands, boutique stores, premium products, customer-focused businesses.",
-        image: "/images/templates/classic.jpg",
+        image: "/images/templates/ecommerce3.png",
         features: [
             "15+ pages",
             "Responsive for all devices",
@@ -30,7 +30,7 @@ export const TEMPLATES = [
         category: "E-commerce",
         description:
             "Bold navy & blue. Built for growing product businesses, multi-product stores, teams that need inventory control.",
-        image: "/images/templates/sharp.jpg",
+        image: "/images/templates/ecommerce2.png",
         features: [
             "12+ pages",
             "Responsive for all devices",
@@ -52,7 +52,7 @@ export const TEMPLATES = [
         category: "E-commerce",
         description:
             "Clean and minimal lifestyle store. Perfect for small shops. For businesses that want to start selling online quickly.",
-        image: "/images/templates/luma.jpg",
+        image: "/images/templates/ecommerce1.png",
         features: [
             "10+ pages",
             "Responsive for all devices",
@@ -71,7 +71,7 @@ export const TEMPLATES = [
         category: "Portfolio",
         description:
             "Personal portfolio template for freelancers, developers, and creators.",
-        image: "/images/templates/portfolio3.jpg",
+        image: "/images/templates/portfolio3.png",
         features: [
             "6+ pages",
             "Personal hero section",
@@ -92,7 +92,7 @@ export const TEMPLATES = [
         category: "Blog",
         description:
             "Clean and modern blog template for businesses, marketers, and personal writers. Admin-only publishing with a powerful dashboard.",
-        image: "/images/templates/blog1.jpg",
+        image: "/images/templates/blog1.png",
         features: [
             "10+ pages",
             "Responsive for all devices",
@@ -115,7 +115,7 @@ export const TEMPLATES = [
         category: "Blog",
         description:
             "Advanced multi-author blogging platform. Perfect for magazines, communities, educational blogs, and growing content teams.",
-        image: "/images/templates/blog2.jpg",
+        image: "/images/templates/blog2.png",
         features: [
             "User registration & authentication",
             "Author dashboard with article management",
@@ -142,7 +142,7 @@ export const TEMPLATES = [
         category: "Portfolio",
         description:
             "Bold creative portfolio designed for agencies, studios, and modern brands.",
-        image: "/images/templates/portfolio2.jpg",
+        image: "/images/templates/novaportfolio.png",
         features: [
             "6+ pages",
             "Dark / Light mode",
@@ -162,7 +162,7 @@ export const TEMPLATES = [
         category: "Portfolio",
         description:
             "Clean corporate portfolio for companies, consultants, and service businesses.",
-        image: "/images/templates/portfolio1.jpg",
+        image: "/images/templates/coreportfolio.png",
         features: [
             "6+ pages",
             "Services showcase",
