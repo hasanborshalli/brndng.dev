@@ -21,6 +21,7 @@ export const TEMPLATES = [
             "SEO optimized",
         ],
         price: 59,
+        yearlyPrice: 650,
         demoUrl: "https://deeppink-hummingbird-503874.hostingersite.com",
     },
     {
@@ -42,6 +43,7 @@ export const TEMPLATES = [
             "SEO optimized",
         ],
         price: 44,
+        yearlyPrice: 500,
         demoUrl: "https://violet-pelican-194372.hostingersite.com",
     },
     {
@@ -60,6 +62,7 @@ export const TEMPLATES = [
             "SEO optimized",
         ],
         price: 29,
+        yearlyPrice: 320,
         demoUrl: "https://tan-otter-415041.hostingersite.com/",
     },
     {
@@ -80,6 +83,7 @@ export const TEMPLATES = [
             "Contact form",
         ],
         price: 19,
+        yearlyPrice: 210,
         demoUrl: "https://personaportfolioo.netlify.app",
     },
     {
@@ -102,6 +106,7 @@ export const TEMPLATES = [
             "Featured images",
         ],
         price: 29,
+        yearlyPrice: 320,
         demoUrl: "https://slateblue-armadillo-351375.hostingersite.com",
     },
     {
@@ -128,6 +133,7 @@ export const TEMPLATES = [
             "Featured images and media uploads",
         ],
         price: 39,
+        yearlyPrice: 430,
         demoUrl: "https://tan-walrus-820471.hostingersite.com/",
     },
     {
@@ -147,6 +153,7 @@ export const TEMPLATES = [
             "Contact form",
         ],
         price: 19,
+        yearlyPrice: 210,
         demoUrl: "https://novastudiocreative.netlify.app",
     },
     {
@@ -165,6 +172,7 @@ export const TEMPLATES = [
             "Contact form",
         ],
         price: 9.99,
+        yearlyPrice: 100,
         demoUrl: "https://corebusinessportfolio.netlify.app",
     },
 ];
@@ -175,7 +183,6 @@ export const getTemplate = (id) =>
 /* ── Order helpers (localStorage) ── */
 export const WHATSAPP_NUMBER = "96176679623";
 export const DOMAIN_PRICE = 15; // one-time USD
-export const YEARLY_PRICE = 100; // per year (vs 10/mo)
 
 export const saveOrder = (data) =>
     localStorage.setItem("brndng_order", JSON.stringify(data));

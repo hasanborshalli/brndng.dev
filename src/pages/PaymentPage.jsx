@@ -5,7 +5,6 @@ import {
     loadOrder,
     saveOrder,
     DOMAIN_PRICE,
-    YEARLY_PRICE,
     WHATSAPP_NUMBER,
 } from "../data/templates";
 import "../styles/buy.css";
@@ -25,17 +24,8 @@ const METHODS = [
         detail: (
             <>
                 Transfer the money to the phone number{" "}
-                <strong>+00961 76 679 623</strong>
+                <strong>+961 76 679 623</strong>
                 <br />
-                Or via this link:{" "}
-                <a
-                    href="https://wishapp.me/brndng" // replace with real link
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="payment-option-link"
-                >
-                    wishapp.me/brndng
-                </a>
             </>
         ),
     },
@@ -43,44 +33,9 @@ const METHODS = [
         id: "usdt",
         name: "USDT",
         icon: null, // custom
-        detail: (
-            <>
-                Wallet <strong>010029191819191010101</strong>
-            </>
-        ),
+        detail: <></>,
     },
 ];
-
-function buildWhatsAppMessage({ templateName, method, domain, period, total }) {
-    const methodLabels = {
-        cash: "Cash",
-        whish: "WHISH Transfer",
-        usdt: "USDT",
-    };
-    const domainLine =
-        domain === "get_one"
-            ? `- Domain: Getting a new domain (+$${DOMAIN_PRICE} one-time)`
-            : `- Domain: Using my own domain`;
-    const periodLine =
-        period === "monthly"
-            ? `- Plan: Monthly ($10/month) — first month FREE`
-            : `- Plan: Yearly ($${YEARLY_PRICE}/year - save $20)`;
-
-    const msg = [
-        `Hello brndng! I'd like to purchase the following:`,
-        ``,
-        `- Template: ${templateName}`,
-        periodLine,
-        domainLine,
-        `- Payment method: ${methodLabels[method]}`,
-        ``,
-        `- Total due now: $${total}${period === "monthly" ? " (first month free)" : ""}`,
-        ``,
-        `Please confirm my order. Thank you!`,
-    ].join("\n");
-
-    return encodeURIComponent(msg);
-}
 
 export default function PaymentPage() {
     const { id } = useParams();
@@ -88,10 +43,44 @@ export default function PaymentPage() {
     const template = getTemplate(id);
     const order = loadOrder();
     const domain = order.domain || "get_one";
-
+    const saved = template.price * 12 - template.yearlyPrice;
     const [method, setMethod] = useState("cash");
     const [period, setPeriod] = useState("monthly");
+    function buildWhatsAppMessage({
+        templateName,
+        method,
+        domain,
+        period,
+        total,
+    }) {
+        const methodLabels = {
+            cash: "Cash",
+            whish: "WHISH Transfer",
+            usdt: "USDT",
+        };
+        const domainLine =
+            domain === "get_one"
+                ? `- Domain: Getting a new domain (+$${DOMAIN_PRICE} one-time)`
+                : `- Domain: Using my own domain`;
+        const periodLine =
+            period === "monthly"
+                ? `- Plan: Monthly ($${template.price}/month) — first month FREE`
+                : `- Plan: Yearly ($${template.yearlyPrice}/year - save $${saved})`;
+        const msg = [
+            `Hello brndng! I'd like to purchase the following:`,
+            ``,
+            `- Template: ${templateName}`,
+            periodLine,
+            domainLine,
+            `- Payment method: ${methodLabels[method]}`,
+            ``,
+            `- Total due now: $${total}${period === "monthly" ? " (first month free)" : ""}`,
+            ``,
+            `Please confirm my order. Thank you!`,
+        ].join("\n");
 
+        return encodeURIComponent(msg);
+    }
     if (!template) {
         return (
             <div
@@ -123,7 +112,7 @@ export default function PaymentPage() {
     }
 
     // Price calculation — first month is free on monthly plan
-    const templateCost = period === "monthly" ? 0 : YEARLY_PRICE;
+    const templateCost = period === "monthly" ? 0 : template.yearlyPrice;
     const domainCost = domain === "get_one" ? DOMAIN_PRICE : 0;
     const total = templateCost + domainCost;
     const periodLabel = period === "monthly" ? `/month` : `/year`;
@@ -259,12 +248,6 @@ export default function PaymentPage() {
                             <div className="usdt-icon">USDT</div>
                             <div>
                                 <div className="payment-option-name">USDT</div>
-                                {method === "usdt" && (
-                                    <div className="payment-option-detail">
-                                        Wallet{" "}
-                                        <strong>010029191819191010101</strong>
-                                    </div>
-                                )}
                             </div>
                         </div>
                     </div>
@@ -285,7 +268,9 @@ export default function PaymentPage() {
                             onClick={() => setPeriod("yearly")}
                         >
                             Yearly
-                            <span className="period-save-badge">Save $20</span>
+                            <span className="period-save-badge">
+                                Save ${saved}
+                            </span>
                         </button>
                     </div>
                 </div>
@@ -296,8 +281,8 @@ export default function PaymentPage() {
                         <span>
                             {template.name} (
                             {period === "monthly"
-                                ? "$10/month"
-                                : `$${YEARLY_PRICE}/year`}
+                                ? `$${template.price}/month`
+                                : `$${template.yearlyPrice}/year`}
                             )
                         </span>
                         <span>
