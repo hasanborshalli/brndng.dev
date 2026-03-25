@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/home.css";
 
+import "../styles/home.css";
+import "../styles/projects.css";
+import { PROJECTS } from "./ProjectsPage";
 // Add your logo files to public/images/partners/
 // Name them: partner-1.png, partner-2.png ... partner-N.png
 // Duplicated for seamless infinite loop
@@ -77,6 +79,11 @@ export default function HomePage() {
                         </a>
                     </li>
                     <li>
+                        <a href="#projects" onClick={scrollTo("projects")}>
+                            Our work
+                        </a>
+                    </li>
+                    <li>
                         <a href="#founders" onClick={scrollTo("founders")}>
                             Meet the team
                         </a>
@@ -106,6 +113,9 @@ export default function HomePage() {
             <div className={`nav-mobile${menuOpen ? " open" : ""}`}>
                 <a href="#services" onClick={scrollTo("services")}>
                     Services
+                </a>
+                <a href="#projects" onClick={scrollTo("projects")}>
+                    Our work
                 </a>
                 <a href="#founders" onClick={scrollTo("founders")}>
                     Meet the team
@@ -344,7 +354,94 @@ export default function HomePage() {
                     ))}
                 </div>
             </section>
-
+            {/* PROJECTS */}
+            <section id="projects" className="home-projects">
+                <div className="home-projects-top">
+                    <div>
+                        <h2 className="home-projects-heading">
+                            Projects we've built
+                        </h2>
+                        <p className="home-projects-sub">
+                            Real websites, real results. Take a look at what
+                            we've delivered.
+                        </p>
+                    </div>
+                    <a
+                        href="/projects"
+                        className="home-projects-link"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            navigate("/projects");
+                        }}
+                    >
+                        View all projects
+                        <svg
+                            width="15"
+                            height="15"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.5"
+                        >
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </a>
+                </div>
+                <div className="home-projects-grid">
+                    {PROJECTS.slice(0, 3).map((p) => (
+                        <div key={p.id} className="proj-card">
+                            <div className="proj-card-img-wrap">
+                                <img
+                                    className="proj-card-img"
+                                    src={p.image}
+                                    alt={p.title}
+                                    onError={(e) => {
+                                        e.target.style.display = "none";
+                                        e.target.parentNode.style.background =
+                                            "linear-gradient(135deg,#1C2B5E,#3D3D96)";
+                                    }}
+                                />
+                                <span className="proj-card-category">
+                                    {p.category}
+                                </span>
+                            </div>
+                            <div className="proj-card-body">
+                                <h3 className="proj-card-title">{p.title}</h3>
+                                <p className="proj-card-desc">
+                                    {p.description}
+                                </p>
+                                <div className="proj-card-tags">
+                                    {p.tags.map((t) => (
+                                        <span key={t} className="proj-tag">
+                                            {t}
+                                        </span>
+                                    ))}
+                                </div>
+                                <a
+                                    href={p.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="proj-btn"
+                                >
+                                    View project
+                                    <svg
+                                        width="13"
+                                        height="13"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth="2.5"
+                                    >
+                                        <line x1="7" y1="17" x2="17" y2="7" />
+                                        <polyline points="7 7 17 7 17 17" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
             {/* WHY US */}
             <section id="whyus" className="whyus">
                 <span

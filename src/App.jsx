@@ -4,7 +4,7 @@ import TemplatesPage from "./pages/TemplatesPage";
 import TemplateBuyPage from "./pages/TemplateBuyPage";
 import ConfirmationPage from "./pages/ConfirmationPage";
 import PaymentPage from "./pages/PaymentPage";
-
+import ProjectsPage from "./pages/ProjectsPage";
 export default function App() {
     return (
         <BrowserRouter>
@@ -23,6 +23,7 @@ export default function App() {
                     path="/templates/:id/payment"
                     element={<PaymentPage />}
                 />
+                <Route path="/projects" element={<ProjectsPage />} />
             </Routes>
         </BrowserRouter>
     );
